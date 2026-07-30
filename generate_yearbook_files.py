@@ -60,6 +60,8 @@ def generate_styles_css():
   --font-serif: 'Cormorant Garamond', 'Lora', Georgia, serif;
   --font-sans: 'Be Vietnam Pro', 'Plus Jakarta Sans', system-ui, sans-serif;
   --font-signature: 'Caveat', cursive;
+  --font-brand: 'VN Lovelista', 'VN-Lovelista', 'VNLovelista', 'Lovelista', 'UTM Davida', cursive, serif;
+  --font-davida: var(--font-brand);
   
   /* Spacing & Sizing */
   --radius-sm: 8px;
@@ -68,6 +70,31 @@ def generate_styles_css():
   --radius-full: 9999px;
   --apple-ease: cubic-bezier(0.16, 1, 0.3, 1);
   --transition: all 0.4s var(--apple-ease);
+}
+
+/* VN LOVELISTA TYPEFACE FOR BRANDING "GUITAR VÀ BẠN" */
+@font-face {
+  font-family: 'VN Lovelista';
+  src: local('VN Lovelista'), local('VN-Lovelista'), local('VNLovelista'), local('Lovelista');
+}
+
+@font-face {
+  font-family: 'VN-Lovelista';
+  src: local('VN-Lovelista'), local('VN Lovelista'), local('VNLovelista'), local('Lovelista');
+}
+
+.font-lovelista,
+.font-brand,
+.font-davida,
+.brand-davida {
+  font-family: var(--font-brand) !important;
+  font-weight: 700;
+  letter-spacing: 0.04em;
+  color: var(--accent-gold);
+  background: linear-gradient(135deg, #ffe58f 0%, #d4af37 50%, #aa8825 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  display: inline-block;
 }
 
 /* Light Magazine Theme Overrides */
@@ -279,9 +306,19 @@ h4 { font-size: clamp(1.15rem, 1.6vw, 1.4rem); }
   display: flex;
   align-items: center;
   gap: 0.85rem;
-  font-family: var(--font-serif);
+  font-family: var(--font-brand);
   font-weight: 700;
-  font-size: 1.3rem;
+  font-size: 1.35rem;
+  letter-spacing: 0.04em;
+}
+
+.logo-brand span {
+  font-family: var(--font-brand);
+  font-weight: 700;
+  color: var(--accent-gold);
+  background: linear-gradient(135deg, #ffe58f 0%, #d4af37 50%, #aa8825 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
 }
 
 .logo-brand img {
@@ -728,16 +765,25 @@ h4 { font-size: clamp(1.15rem, 1.6vw, 1.4rem); }
 
 .bqt-badge {
   position: absolute;
-  top: 1rem;
-  right: 1rem;
-  background: rgba(11, 9, 14, 0.88);
-  backdrop-filter: blur(8px);
+  bottom: 0.85rem;
+  right: 0.85rem;
+  background: rgba(11, 9, 14, 0.55);
+  backdrop-filter: blur(6px);
+  -webkit-backdrop-filter: blur(6px);
   color: var(--accent-gold);
-  padding: 0.4rem 0.95rem;
+  padding: 0.35rem 0.85rem;
   border-radius: var(--radius-full);
   font-size: 0.75rem;
   font-weight: 600;
   border: 1px solid var(--border-light);
+  opacity: 0.75;
+  transition: var(--transition);
+  z-index: 2;
+}
+
+.bqt-card:hover .bqt-badge {
+  opacity: 1;
+  background: rgba(11, 9, 14, 0.85);
 }
 
 .bqt-content {
@@ -1035,7 +1081,12 @@ h4 { font-size: clamp(1.15rem, 1.6vw, 1.4rem); }
   border-left: 3px solid var(--accent-gold);
 }
 
-/* SECTION 7: STORIES */
+/* SECTION 7: STORIES - VIETNAMESE HANDWRITING TYPEFACE */
+@font-face {
+  font-family: 'UTM Handwriting';
+  src: local('UTM Handwriting'), local('SVN-Handwriting'), local('VNI-ThuongPhap'), local('VNI-Viettay');
+}
+
 .story-article {
   background: var(--bg-card);
   border-radius: var(--radius-lg);
@@ -1059,8 +1110,35 @@ h4 { font-size: clamp(1.15rem, 1.6vw, 1.4rem); }
 }
 
 .story-title {
+  font-family: 'Itim', 'Mali', 'Patrick Hand', 'Dancing Script', var(--font-serif);
   font-size: clamp(1.85rem, 3.2vw, 2.7rem);
+  font-weight: 700;
+  color: var(--accent-gold);
   margin-bottom: 1rem;
+  line-height: 1.3;
+}
+
+.story-content {
+  font-family: 'Itim', 'Mali', 'Patrick Hand', 'UTM Script', sans-serif !important;
+}
+
+.story-content p {
+  font-family: 'Itim', 'Mali', 'Patrick Hand', 'UTM Script', sans-serif !important;
+  font-size: clamp(1.1rem, 1.8vw, 1.3rem) !important;
+  line-height: 1.85 !important;
+  letter-spacing: 0.015em !important;
+  text-align: justify !important;
+  text-justify: inter-word;
+  color: var(--text-main);
+  margin-bottom: 1.6rem;
+}
+
+.story-content p:first-of-type::first-letter {
+  font-family: 'Itim', 'Mali', var(--font-serif);
+  font-size: 4.5rem;
+  line-height: 0.8;
+  color: var(--accent-gold);
+  font-weight: 700;
 }
 
 /* SECTION 8: CLOSING */
@@ -1504,7 +1582,7 @@ def generate_index_html(bqt_data, sec6_data, stories_data, gallery_data):
   <!-- High-Quality Vietnamese Google Fonts -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Be+Vietnam+Pro:ital,wght@0,300;0,400;0,500;0,600;0,700;1,400&family=Cormorant+Garamond:ital,wght@0,400;0,600;0,700;1,400&family=Lora:ital,wght@0,400;0,500;0,600;0,700;1,400&family=Caveat:wght@600;700&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Be+Vietnam+Pro:ital,wght@0,300;0,400;0,500;0,600;0,700;1,400&family=Cinzel+Decorative:wght@700&family=Cormorant+Garamond:ital,wght@0,400;0,600;0,700;1,400&family=Lora:ital,wght@0,400;0,500;0,600;0,700;1,400&family=Caveat:wght@600;700&display=swap" rel="stylesheet">
   
   <!-- Main Stylesheet -->
   <link rel="stylesheet" href="styles.css">
@@ -1516,7 +1594,7 @@ def generate_index_html(bqt_data, sec6_data, stories_data, gallery_data):
     <div class="container nav-inner">
       <a href="#cover" class="logo-brand">
         <img src="assets/images/logo.png" alt="CLB Guitar và Bạn Logo">
-        <span>Guitar & Bạn</span>
+        <span class="font-davida">Guitar & Bạn</span>
       </a>
       
       <!-- Section Reading Tracker -->
@@ -1538,11 +1616,11 @@ def generate_index_html(bqt_data, sec6_data, stories_data, gallery_data):
 
   <main>
     <!-- SECTION 1: COVER HERO -->
-    <section id="cover" class="hero-section" data-section-title="Phần I: Bìa Kỷ Yếu">
+    <section id="cover" class="hero-section" data-section-title="Bìa Kỷ Yếu">
       <div class="hero-overlay"></div>
       <div class="hero-content reveal">
         <div class="hero-badge">
-          <span>🎸 KỶ NIỆM 05 NĂM THÀNH LẬP CLB GUITAR VÀ BẠN</span>
+          <span>🎸 KỶ NIỆM 05 NĂM THÀNH LẬP CLB <span class="font-davida">GUITAR VÀ BẠN</span></span>
         </div>
         <h1 class="hero-title">CHÚNG TA CỦA NHỮNG NĂM ẤY</h1>
         <p class="hero-subtitle">
@@ -1567,7 +1645,7 @@ def generate_index_html(bqt_data, sec6_data, stories_data, gallery_data):
     </section>
 
     <!-- SECTION 1.2: FOREWORD -->
-    <section id="foreword" class="section foreword-section" data-section-title="Phần I: Lời Ngỏ Ban Quản Trị">
+    <section id="foreword" class="section foreword-section" data-section-title="Lời Ngỏ Ban Quản Trị">
       <div class="container">
         <div class="foreword-grid">
           <div class="foreword-image-frame reveal">
@@ -1604,7 +1682,7 @@ def generate_index_html(bqt_data, sec6_data, stories_data, gallery_data):
     </section>
 
     <!-- SECTION 1.3: TABLE OF CONTENTS -->
-    <section class="section" data-section-title="Phần I: Mục Lục Kỷ Yếu">
+    <section class="section" data-section-title="Mục Lục Kỷ Yếu">
       <div class="container">
         <div class="section-header reveal">
           <div class="subtitle">MỤC LỤC KỶ YẾU</div>
@@ -1613,42 +1691,42 @@ def generate_index_html(bqt_data, sec6_data, stories_data, gallery_data):
         <div class="toc-grid">
           <a href="#cover" class="toc-card reveal reveal-delay-1">
             <div class="toc-number">01</div>
-            <h3>Phần I. Mở Đầu</h3>
+            <h3>Mở Đầu</h3>
             <p>Bìa kỷ yếu, Lời ngỏ Ban Quản trị, Giới thiệu & Sứ mệnh CLB</p>
           </a>
           <a href="#journey" class="toc-card reveal reveal-delay-1">
             <div class="toc-number">02</div>
-            <h3>Phần II. Hành Trình 05 Năm</h3>
+            <h3>Hành Trình 05 Năm</h3>
             <p>Mốc thời gian 2021-2026, Con số ấn tượng & Dấu ấn phát triển</p>
           </a>
           <a href="#bqt" class="toc-card reveal reveal-delay-2">
             <div class="toc-number">03</div>
-            <h3>Phần III. Những Người Giữ Lửa</h3>
+            <h3>Những Người Giữ Lửa</h3>
             <p>11 Thành viên Ban Quản trị & Tri ân thế hệ tiền nhiệm</p>
           </a>
           <a href="#sponsors" class="toc-card reveal reveal-delay-2">
             <div class="toc-number">04</div>
-            <h3>Phần IV. Tri Ân Đồng Hành</h3>
+            <h3>Tri Ân Đồng Hành</h3>
             <p>Tôn vinh các nhà tài trợ, mạnh thường quân & người đồng hành</p>
           </a>
           <a href="#gallery" class="toc-card reveal reveal-delay-3">
             <div class="toc-number">05</div>
-            <h3>Phần V. Khoảnh Khắc Đáng Nhớ</h3>
+            <h3>Khoảnh Khắc Đáng Nhớ</h3>
             <p>Bộ sưu tập hình ảnh offline, giao lưu, guitar & thiện nguyện</p>
           </a>
           <a href="#members" class="toc-card reveal reveal-delay-3">
             <div class="toc-number">06</div>
-            <h3>Phần VI. Chúng Ta Của Những Năm Ấy</h3>
+            <h3>Chúng Ta Của Những Năm Ấy</h3>
             <p>Trang thông tin cá nhân & hình ảnh của gần 40 thành viên</p>
           </a>
           <a href="#stories" class="toc-card reveal reveal-delay-3">
             <div class="toc-number">07</div>
-            <h3>Phần VII. Những Câu Chuyện Còn Mãi</h3>
+            <h3>Những Câu Chuyện Còn Mãi</h3>
             <p>7 Bài viết cảm xúc, hồi ký & trải nghiệm cá nhân đặc sắc</p>
           </a>
           <a href="#farewell" class="toc-card reveal reveal-delay-3">
             <div class="toc-number">08</div>
-            <h3>Phần VIII. Hẹn Gặp Lại</h3>
+            <h3>Hẹn Gặp Lại</h3>
             <p>Lời kết, thông điệp hướng tới tương lai & Mã QR kết nối</p>
           </a>
         </div>
@@ -1656,7 +1734,7 @@ def generate_index_html(bqt_data, sec6_data, stories_data, gallery_data):
     </section>
 
     <!-- SECTION 1.4: ABOUT & VALUES -->
-    <section class="section" style="background: var(--bg-secondary);" data-section-title="Phần I: Giới Thiệu CLB">
+    <section class="section" style="background: var(--bg-secondary);" data-section-title="Giới Thiệu CLB">
       <div class="container">
         <div class="section-header reveal">
           <div class="subtitle">GIỚI THIỆU CLB</div>
@@ -1692,10 +1770,10 @@ def generate_index_html(bqt_data, sec6_data, stories_data, gallery_data):
     </section>
 
     <!-- SECTION 2: JOURNEY & TIMELINE -->
-    <section id="journey" class="section" data-section-title="Phần II: Hành Trình 05 Năm">
+    <section id="journey" class="section" data-section-title="Hành Trình 05 Năm">
       <div class="container">
         <div class="section-header reveal">
-          <div class="subtitle">PHẦN II. HÀNH TRÌNH 05 NĂM</div>
+          <div class="subtitle">HÀNH TRÌNH 05 NĂM</div>
           <h2>Dấu ấn thời gian (2021 – 2026)</h2>
         </div>
 
@@ -1740,10 +1818,10 @@ def generate_index_html(bqt_data, sec6_data, stories_data, gallery_data):
     </section>
 
     <!-- SECTION 3: BQT -->
-    <section id="bqt" class="section" style="background: var(--bg-secondary);" data-section-title="Phần III: Những Người Giữ Lửa">
+    <section id="bqt" class="section" style="background: var(--bg-secondary);" data-section-title="Những Người Giữ Lửa">
       <div class="container">
         <div class="section-header reveal">
-          <div class="subtitle">PHẦN III. NHỮNG NGƯỜI GIỮ LỬA</div>
+          <div class="subtitle">NHỮNG NGƯỜI GIỮ LỬA</div>
           <h2>Ban Quản Trị Đương Nhiệm (11 Trang)</h2>
           <p>Những con người âm thầm cống hiến thời gian, công sức và tâm huyết để gìn giữ không gian ấm áp cho CLB.</p>
         </div>
@@ -1762,10 +1840,10 @@ def generate_index_html(bqt_data, sec6_data, stories_data, gallery_data):
     </section>
 
     <!-- SECTION 4: SPONSORS -->
-    <section id="sponsors" class="section" data-section-title="Phần IV: Tri Ân Đồng Hành">
+    <section id="sponsors" class="section" data-section-title="Tri Ân Đồng Hành">
       <div class="container">
         <div class="section-header reveal">
-          <div class="subtitle">PHẦN IV. TRI ÂN NHỮNG NGƯỜI ĐỒNG HÀNH</div>
+          <div class="subtitle">TRI ÂN NHỮNG NGƯỜI ĐỒNG HÀNH</div>
           <h2>Nhà Tài Trợ & Mạnh Thường Quân</h2>
           <p>Xin trân trọng ghi nhận và cảm ơn những tấm lòng sẻ chia đã giúp đỡ CLB trong suốt 05 năm qua.</p>
         </div>
@@ -1829,10 +1907,10 @@ def generate_index_html(bqt_data, sec6_data, stories_data, gallery_data):
     </section>
 
     <!-- SECTION 5: GALLERY -->
-    <section id="gallery" class="section" style="background: var(--bg-secondary);" data-section-title="Phần V: Khoảnh Khắc Đáng Nhớ">
+    <section id="gallery" class="section" style="background: var(--bg-secondary);" data-section-title="Khoảnh Khắc Đáng Nhớ">
       <div class="container">
         <div class="section-header reveal">
-          <div class="subtitle">PHẦN V. KHOẢNH KHẮC ĐÁNG NHỚ</div>
+          <div class="subtitle">KHOẢNH KHẮC ĐÁNG NHỚ</div>
           <h2>Bộ Sưu Tập Hình Ảnh Kỷ Niệm</h2>
         </div>
 
@@ -1851,10 +1929,10 @@ def generate_index_html(bqt_data, sec6_data, stories_data, gallery_data):
     </section>
 
     <!-- SECTION 6: MEMBERS SPOTLIGHT -->
-    <section id="members" class="section" data-section-title="Phần VI: Chúng Ta Của Những Năm Ấy">
+    <section id="members" class="section" data-section-title="Chúng Ta Của Những Năm Ấy">
       <div class="container">
         <div class="section-header reveal">
-          <div class="subtitle">PHẦN VI. CHÚNG TA CỦA NHỮNG NĂM ẤY</div>
+          <div class="subtitle">CHÚNG TA CỦA NHỮNG NĂM ẤY</div>
           <h2>Gương Mặt Thành Viên (29 Trang)</h2>
         </div>
 
@@ -1870,10 +1948,10 @@ def generate_index_html(bqt_data, sec6_data, stories_data, gallery_data):
     </section>
 
     <!-- SECTION 7: STORIES -->
-    <section id="stories" class="section" style="background: var(--bg-secondary);" data-section-title="Phần VII: Những Câu Chuyện Còn Mãi">
+    <section id="stories" class="section" style="background: var(--bg-secondary);" data-section-title="Những Câu Chuyện Còn Mãi">
       <div class="container">
         <div class="section-header reveal">
-          <div class="subtitle">PHẦN VII. NHỮNG CÂU CHUYỆN CÒN MÃI</div>
+          <div class="subtitle">NHỮNG CÂU CHUYỆN CÒN MÃI</div>
           <h2>Hồi Ký & Trải Nghiệm Cá Nhân</h2>
         </div>
 
@@ -1882,16 +1960,16 @@ def generate_index_html(bqt_data, sec6_data, stories_data, gallery_data):
     </section>
 
     <!-- SECTION 8: CLOSING -->
-    <section id="farewell" class="section closing-section" data-section-title="Phần VIII: Hẹn Gặp Lại">
+    <section id="farewell" class="section closing-section" data-section-title="Hẹn Gặp Lại">
       <div class="container">
         <div class="closing-card reveal">
-          <div class="subtitle">PHẦN VIII. HẸN GẶP LẠI</div>
+          <div class="subtitle">HẸN GẶP LẠI</div>
           <h2 style="font-size: clamp(2.2rem, 4.5vw, 3.8rem); margin-bottom: 1.5rem;">HẸN GẶP LẠI...</h2>
           <div class="pull-quote" style="border:none; background:none; font-size: 1.3rem;">
             "Có người nói rằng, điều đẹp nhất của một cuộc gặp gỡ không phải là chúng ta đã ở bên nhau bao lâu, mà là sau nhiều năm nhìn lại, vẫn còn nhớ mình đã từng mỉm cười vì nhau."
           </div>
           <p style="color:var(--text-muted); font-size:1.15rem; max-width:720px; margin: 0 auto 2rem auto; text-align:center !important;">
-            Mỗi người là một giai điệu. Cùng nhau, chúng ta đã tạo nên một bản hòa ca mang tên CLB Guitar và Bạn.
+            Mỗi người là một giai điệu. Cùng nhau, chúng ta đã tạo nên một bản hòa ca mang tên CLB <span class="font-davida">Guitar và Bạn</span>.
           </p>
           
           <div class="qr-box reveal reveal-delay-1">
