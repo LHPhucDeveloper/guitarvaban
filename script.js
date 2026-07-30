@@ -4,50 +4,12 @@
    ---------------------------------------------------- */
 
 document.addEventListener('DOMContentLoaded', () => {
-  initThemeToggle();
-  initPrintTrigger();
   initMemberSearch();
   initGalleryFilter();
   initLightbox();
   initScrollProgressAndSectionTracker();
   initAppleScrollReveal();
 });
-
-/* Theme Switcher (Dark Velvet vs Light Magazine) */
-function initThemeToggle() {
-  const toggleBtn = document.getElementById('theme-toggle');
-  if (!toggleBtn) return;
-
-  const currentTheme = localStorage.getItem('yearbook_theme') || 'dark';
-  document.documentElement.setAttribute('data-theme', currentTheme);
-  updateThemeIcon(currentTheme);
-
-  toggleBtn.addEventListener('click', () => {
-    const activeTheme = document.documentElement.getAttribute('data-theme');
-    const newTheme = activeTheme === 'dark' ? 'light' : 'dark';
-    document.documentElement.setAttribute('data-theme', newTheme);
-    localStorage.setItem('yearbook_theme', newTheme);
-    updateThemeIcon(newTheme);
-  });
-}
-
-function updateThemeIcon(theme) {
-  const toggleBtn = document.getElementById('theme-toggle');
-  if (!toggleBtn) return;
-  toggleBtn.innerHTML = theme === 'dark' ? '☀️' : '🌙';
-  toggleBtn.setAttribute('title', theme === 'dark' ? 'Chuyển giao diện Sáng' : 'Chuyển giao diện Tối');
-}
-
-/* Print Shortcut */
-function initPrintTrigger() {
-  const printBtns = document.querySelectorAll('.js-print-trigger');
-  printBtns.forEach(btn => {
-    btn.addEventListener('click', (e) => {
-      e.preventDefault();
-      window.print();
-    });
-  });
-}
 
 /* Member Search & Filter */
 function initMemberSearch() {
