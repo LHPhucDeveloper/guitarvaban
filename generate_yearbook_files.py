@@ -114,6 +114,7 @@ img {
   height: auto;
   display: block;
   object-fit: cover;
+  object-position: center 20%;
 }
 
 a {
@@ -717,6 +718,7 @@ h4 { font-size: clamp(1.15rem, 1.6vw, 1.4rem); }
   width: 100%;
   height: 100%;
   object-fit: cover;
+  object-position: center 20%;
   transition: transform 0.7s var(--apple-ease);
 }
 
@@ -816,6 +818,57 @@ h4 { font-size: clamp(1.15rem, 1.6vw, 1.4rem); }
 .sponsor-card:hover {
   transform: translateY(-5px);
   border-color: var(--accent-gold);
+}
+
+.former-bqt-box {
+  background: var(--bg-card);
+  padding: 2.25rem;
+  border-radius: var(--radius-md);
+  border: 1px solid var(--border-light);
+  box-shadow: var(--shadow-soft);
+  text-align: center;
+}
+
+.former-bqt-intro {
+  color: var(--accent-gold);
+  font-size: 1.1rem;
+  font-weight: 600;
+  margin-bottom: 1.75rem;
+  text-align: center !important;
+}
+
+.former-bqt-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+  gap: 1rem;
+}
+
+.former-bqt-card {
+  background: var(--bg-secondary);
+  padding: 0.85rem 1.25rem;
+  border-radius: var(--radius-sm);
+  border: 1px solid rgba(255, 255, 255, 0.06);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.6rem;
+  transition: var(--transition);
+}
+
+.former-bqt-card:hover {
+  transform: translateY(-3px);
+  border-color: var(--accent-gold);
+  background: rgba(212, 175, 55, 0.05);
+}
+
+.former-bqt-icon {
+  font-size: 0.9rem;
+}
+
+.former-bqt-name {
+  font-weight: 500;
+  font-size: 0.95rem;
+  color: var(--text-main);
 }
 
 /* SECTION 5: GALLERY MASONRY */
@@ -943,6 +996,7 @@ h4 { font-size: clamp(1.15rem, 1.6vw, 1.4rem); }
   height: 290px;
   width: 100%;
   object-fit: cover;
+  object-position: center 20%;
 }
 
 .member-body {
@@ -1011,7 +1065,7 @@ h4 { font-size: clamp(1.15rem, 1.6vw, 1.4rem); }
 
 /* SECTION 8: CLOSING */
 .closing-section {
-  background: radial-gradient(circle at center, rgba(212, 175, 55, 0.16) 0%, rgba(11, 9, 14, 1) 80%),
+  background: radial-gradient(circle at center, rgba(212, 175, 55, 0.25) 0%, rgba(11, 9, 14, 0.82) 85%),
               url('assets/images/gallery/image35.jpeg') center/cover no-repeat;
   background-blend-mode: overlay;
   text-align: center;
@@ -1021,11 +1075,20 @@ h4 { font-size: clamp(1.15rem, 1.6vw, 1.4rem); }
 .closing-card {
   max-width: 820px;
   margin: 0 auto;
-  background: rgba(19, 16, 25, 0.88);
-  backdrop-filter: blur(25px);
+  background: rgba(19, 16, 25, 0.38);
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
   padding: 4.5rem 2.5rem;
   border-radius: var(--radius-lg);
   border: 1px solid var(--border-light);
+  box-shadow: 0 20px 50px rgba(0, 0, 0, 0.5);
+}
+
+.closing-card h2,
+.closing-card p,
+.closing-card .pull-quote,
+.closing-card .subtitle {
+  text-shadow: 0 2px 12px rgba(0, 0, 0, 0.95), 0 0 20px rgba(0, 0, 0, 0.8);
 }
 
 .qr-box {
@@ -1034,12 +1097,15 @@ h4 { font-size: clamp(1.15rem, 1.6vw, 1.4rem); }
   padding: 1.75rem;
   background: #ffffff;
   border-radius: var(--radius-md);
-  box-shadow: var(--shadow-glow);
+  box-shadow: 0 12px 35px rgba(0, 0, 0, 0.6);
+  position: relative;
+  z-index: 2;
 }
 
 .qr-box img {
   width: 170px;
   height: 170px;
+  object-fit: contain;
 }
 
 .qr-box p {
@@ -1047,6 +1113,7 @@ h4 { font-size: clamp(1.15rem, 1.6vw, 1.4rem); }
   font-weight: 700;
   font-size: 0.9rem;
   margin-top: 0.6rem;
+  text-shadow: none;
 }
 
 /* LIGHTBOX MODAL */
@@ -1161,7 +1228,9 @@ h4 { font-size: clamp(1.15rem, 1.6vw, 1.4rem); }
   .story-article,
   .toc-card,
   .timeline-card,
-  .sponsor-card {
+  .sponsor-card,
+  .former-bqt-box,
+  .former-bqt-card {
     background: #ffffff !important;
     border: 1px solid #ddd !important;
     box-shadow: none !important;
@@ -1732,6 +1801,30 @@ def generate_index_html(bqt_data, sec6_data, stories_data, gallery_data):
             </div>
           </div>
         </div>
+
+        <div class="sponsor-tier reveal reveal-delay-2">
+          <div class="sponsor-tier-title">
+            <span>🎗️ Cựu Ban Quản Trị</span>
+          </div>
+          <div class="former-bqt-box">
+            <p class="former-bqt-intro">Xin trân trọng ghi nhận và cảm ơn:</p>
+            <div class="former-bqt-grid">
+              <div class="former-bqt-card"><span class="former-bqt-icon">⭐</span> <span class="former-bqt-name">Anh Hổ Ca</span></div>
+              <div class="former-bqt-card"><span class="former-bqt-icon">⭐</span> <span class="former-bqt-name">Nguyễn Văn Bảo</span></div>
+              <div class="former-bqt-card"><span class="former-bqt-icon">⭐</span> <span class="former-bqt-name">Nguyễn Trường Chinh</span></div>
+              <div class="former-bqt-card"><span class="former-bqt-icon">⭐</span> <span class="former-bqt-name">Anh Hưng Car</span></div>
+              <div class="former-bqt-card"><span class="former-bqt-icon">⭐</span> <span class="former-bqt-name">Vũ Thanh</span></div>
+              <div class="former-bqt-card"><span class="former-bqt-icon">⭐</span> <span class="former-bqt-name">Samaêl Tuấn Phi</span></div>
+              <div class="former-bqt-card"><span class="former-bqt-icon">⭐</span> <span class="former-bqt-name">Trinh Nguyễn</span></div>
+              <div class="former-bqt-card"><span class="former-bqt-icon">⭐</span> <span class="former-bqt-name">Bình Phạm</span></div>
+              <div class="former-bqt-card"><span class="former-bqt-icon">⭐</span> <span class="former-bqt-name">Anh Vũ Hoàng</span></div>
+              <div class="former-bqt-card"><span class="former-bqt-icon">⭐</span> <span class="former-bqt-name">Anh Đức Nhã</span></div>
+              <div class="former-bqt-card"><span class="former-bqt-icon">⭐</span> <span class="former-bqt-name">Hiệp Châu</span></div>
+              <div class="former-bqt-card"><span class="former-bqt-icon">⭐</span> <span class="former-bqt-name">Ngọc Ngây Ngô</span></div>
+              <div class="former-bqt-card"><span class="former-bqt-icon">⭐</span> <span class="former-bqt-name">Hiền Catarina</span></div>
+            </div>
+          </div>
+        </div>
       </div>
     </section>
 
@@ -1802,7 +1895,7 @@ def generate_index_html(bqt_data, sec6_data, stories_data, gallery_data):
           </p>
           
           <div class="qr-box reveal reveal-delay-1">
-            <img src="assets/images/logo.png" alt="QR Code Facebook Group">
+            <img src="assets/images/qr_facebook.png" alt="QR Code Facebook Group">
             <p>Tham Gia Group Facebook</p>
           </div>
 
