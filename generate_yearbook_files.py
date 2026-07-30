@@ -1339,6 +1339,13 @@ h4 { font-size: clamp(1.15rem, 1.6vw, 1.4rem); }
 img[src*="members/15.png"] {
   object-position: right top !important;
 }
+
+img[src*="members/22.png"] {
+  object-fit: contain !important;
+  background: #f5eedf !important;
+  object-position: center center !important;
+  padding: 0.25rem;
+}
 """
     with open('styles.css', 'w', encoding='utf-8') as f:
         f.write(css_content)
