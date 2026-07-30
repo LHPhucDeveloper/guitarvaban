@@ -1334,6 +1334,11 @@ h4 { font-size: clamp(1.15rem, 1.6vw, 1.4rem); }
 
   a { text-decoration: none !important; color: #000 !important; }
 }
+
+/* Custom Photo Adjustments */
+img[src*="members/15.png"] {
+  object-position: right top !important;
+}
 """
     with open('styles.css', 'w', encoding='utf-8') as f:
         f.write(css_content)
