@@ -44,6 +44,12 @@
 
 /* VN LOVELISTA TYPEFACE FOR BRANDING "GUITAR VÀ BẠN" */
 @font-face {
+  font-family: 'HyliaSerif';
+  src: url('https://static.wfonts.com/data/2017/11/16/hylia-serif/HyliaSerif.ttf') format('truetype');
+  font-display: swap;
+}
+
+@font-face {
   font-family: 'VN Lovelista';
   src: local('VN Lovelista'), local('VN-Lovelista'), local('VNLovelista'), local('Lovelista');
 }
@@ -291,6 +297,12 @@ h4 { font-size: clamp(1.15rem, 1.6vw, 1.4rem); }
   -webkit-text-fill-color: transparent;
 }
 
+.logo-brand .logo-brand-bottle {
+  font-family: 'HyliaSerif', 'UTM Davida', 'Bookman Old Style', serif !important;
+  font-weight: 400;
+  letter-spacing: 0.02em;
+}
+
 .logo-brand img {
   width: 44px;
   height: 44px;
@@ -497,10 +509,24 @@ h4 { font-size: clamp(1.15rem, 1.6vw, 1.4rem); }
 }
 
 .foreword-image-caption {
-  margin-bottom: 1rem;
-  color: var(--text-main);
-  font-size: 1.2rem;
+  margin: 0;
+  padding: 1rem 1.25rem;
+  border-top: 4px solid var(--accent-gold);
+  background: rgba(212, 175, 55, 0.06);
+  color: var(--accent-gold-light);
+  font-size: 1.05rem;
   text-align: center;
+}
+
+.foreword-logo-frame {
+  background: #000;
+}
+
+.foreword-logo-frame img {
+  height: auto;
+  max-height: 560px;
+  object-fit: contain;
+  background: #000;
 }
 
 .foreword-image-frame {
