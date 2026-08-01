@@ -523,8 +523,8 @@ h4 { font-size: clamp(1.15rem, 1.6vw, 1.4rem); }
 }
 
 .foreword-logo-frame img {
-  height: auto;
-  max-height: 560px;
+  height: auto !important;
+  max-height: none;
   object-fit: contain;
   background: #000;
 }
