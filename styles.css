@@ -441,6 +441,10 @@ h4 { font-size: clamp(1.15rem, 1.6vw, 1.4rem); }
   margin-bottom: 2rem;
 }
 
+.hero-badge .font-davida {
+  font-family: 'Palatino Linotype', 'Book Antiqua', Palatino, serif !important;
+}
+
 .hero-title {
   font-size: clamp(3.2rem, 7.5vw, 5.8rem);
   font-weight: 900;
