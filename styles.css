@@ -496,6 +496,13 @@ h4 { font-size: clamp(1.15rem, 1.6vw, 1.4rem); }
   margin: 0 auto;
 }
 
+.foreword-image-caption {
+  margin-bottom: 1rem;
+  color: var(--text-main);
+  font-size: 1.2rem;
+  text-align: center;
+}
+
 .foreword-image-frame {
   position: relative;
   border-radius: var(--radius-lg);
@@ -952,13 +959,6 @@ h4 { font-size: clamp(1.15rem, 1.6vw, 1.4rem); }
   object-fit: cover;
 }
 
-.former-bqt-image-frame figcaption {
-  padding: 1rem 1.25rem;
-  color: var(--text-main);
-  font-weight: 600;
-  line-height: 1.5;
-  text-align: center;
-}
 
 /* SECTION 5: GALLERY MASONRY */
 .gallery-filter {
